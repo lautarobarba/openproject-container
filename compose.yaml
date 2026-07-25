@@ -1,0 +1,19 @@
+name: openproject
+services:
+  openproject:
+    container_name: openproject
+    image: openproject/openproject:17
+    env_file: .env
+    restart: always
+    environment:
+      - OPENPROJECT_DEFAULT__LANGUAGE=es
+      - OPENPROJECT_HTTPS=${OPENPROJECT_HTTPS}
+      - OPENPROJECT_HOST__NAME=${OPENPROJECT_HOST_NAME}
+      # Secret key para firmar sesiones y cookies (genera un string random seguro en tu .env)
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    ports:
+      - ${OPENPROJECT_PORT}:80
+      # - ${DB_PORT}:5432
+    volumes:
+      - ./openproject/pgdata:/var/openproject/pgdata
+      - ./openproject/assets:/var/openproject/assets
