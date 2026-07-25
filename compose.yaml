@@ -2,7 +2,7 @@ name: openproject
 services:
   openproject:
     container_name: openproject
-    image: openproject/openproject:17
+    image: openproject/openproject:17.6.0
     env_file: .env
     restart: always
     environment:
