@@ -11,6 +11,15 @@ services:
       - OPENPROJECT_HOST__NAME=${OPENPROJECT_HOST_NAME}
       # Secret key para firmar sesiones y cookies (genera un string random seguro en tu .env)
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      # SMTP
+      - OPENPROJECT_EMAIL__DELIVERY__METHOD=smtp
+      - OPENPROJECT_SMTP__ADDRESS=${SMTP_HOST}
+      - OPENPROJECT_SMTP__PORT=${SMTP_PORT}}
+      - OPENPROJECT_SMTP__DOMAIN=desarrollosur.com.ar
+      - OPENPROJECT_SMTP__AUTHENTICATION=${SMTP_AUTH}
+      - OPENPROJECT_SMTP__USER__NAME=${SMTP_USER}
+      - OPENPROJECT_SMTP__PASSWORD=${SMTP_PASSWORD}
+      - OPENPROJECT_SMTP__ENABLE__STARTTLS__AUTO=${SMTP_STARTTTLS_AUTO}
     ports:
       - ${OPENPROJECT_PORT}:80
       # Descomentar para exponer la base de datos interna y conectarte con un
